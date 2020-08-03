@@ -5,13 +5,23 @@
     android:layout_height="match_parent"
     tools:context="com.chalookoba.lyrikapp.TrendingSongsActivity">
 
+    <Button
+        android:id="@+id/feedbackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Feedback"
+        android:textColor="@color/colorPrimary"
+        android:layout_alignParentRight="true"/>
+
     <TextView
         android:id="@+id/artistSearchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Songs near "
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
 
     <ListView
         android:id="@+id/listView"
