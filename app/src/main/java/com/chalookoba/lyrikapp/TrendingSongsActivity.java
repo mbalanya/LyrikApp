@@ -5,16 +5,19 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TrendingSongsActivity extends AppCompatActivity {
+public class TrendingSongsActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView(R.id.artistSearchTextView) TextView mArtistSearchTextView;
     @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.feedbackButton) Button mFeedbackButton;
     private String[] artists = new String[] {"Juice WRLD", "The Chicks",
             "Pop Smoke", "Harry Styles", "Lil Baby", "Post Malone",
             "DaBaby", "Luke Combs", "The Weekend", "BTS",
@@ -40,9 +43,16 @@ public class TrendingSongsActivity extends AppCompatActivity {
         String artistSearch = intent.getStringExtra("artistSearch");
         mArtistSearchTextView.setText("Here are all the songs by: " + artistSearch);
 
-        FragmentManager fm = getSupportFragmentManager();
-        FeedbackDialogFragment feedbackDialogFragment = new FeedbackDialogFragment();
-        feedbackDialogFragment.show(fm, "Feedback Fragment");
+        mFeedbackButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == mFeedbackButton) {
+            FragmentManager fm = getSupportFragmentManager();
+            FeedbackDialogFragment feedbackDialogFragment = new FeedbackDialogFragment();
+            feedbackDialogFragment.show(fm, "Feedback Fragment");
+        }
     }
 
 }
