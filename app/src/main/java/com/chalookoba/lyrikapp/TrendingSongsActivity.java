@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class TrendingSongsActivity extends AppCompatActivity {
     private TextView mSearchArtistTextView;
+    private ListView mListView;
     private String[] artists = new String[] {"Juice WRLD", "The Chicks",
             "Pop Smoke", "Harry Styles", "Lil Baby", "Post Malone",
             "DaBaby", "Luke Combs", "The Weekend", "BTS",
@@ -18,7 +21,13 @@ public class TrendingSongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trending_songs);
+
         mSearchArtistTextView = (TextView) findViewById(R.id.artistSearchTextView);
+        mListView = (ListView) findViewById(R.id.listView);
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, artists);
+        mListView.setAdapter(adapter);
+
         Intent intent = getIntent();
         String artistSearch = intent.getStringExtra("artistSearch");
         mSearchArtistTextView.setText("Here are all the songs by: " + artistSearch);
