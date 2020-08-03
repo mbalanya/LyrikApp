@@ -20,16 +20,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toast.makeText(MainActivity.this, "Welcome to LyrikApp World!", Toast.LENGTH_LONG).show();
+
         mArtistSearch = (EditText) findViewById(R.id.artistSearch);
         mSearchSongButton = (Button)findViewById(R.id.searchSongButton);
+
         mSearchSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivity.this, TrendingSongsActivity.class);
-                startActivity(intent);
                 String artistSearch = mArtistSearch.getText().toString();
-                Toast.makeText(MainActivity.this, artistSearch, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, TrendingSongsActivity.class);
+                intent.putExtra("artistSearch", artistSearch);
+                startActivity(intent);
             }
         });
     }
