@@ -62,6 +62,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+            <Button
+                android:id="@+id/submitButton"
+                android:text="Submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/cancelButton"
+                android:text="Cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </RadioGroup>
     </LinearLayout>
 
