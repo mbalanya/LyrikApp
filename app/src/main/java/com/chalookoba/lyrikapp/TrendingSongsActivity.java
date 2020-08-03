@@ -1,6 +1,7 @@
 package com.chalookoba.lyrikapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,5 +39,10 @@ public class TrendingSongsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String artistSearch = intent.getStringExtra("artistSearch");
         mArtistSearchTextView.setText("Here are all the songs by: " + artistSearch);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FeedbackDialogFragment feedbackDialogFragment = new FeedbackDialogFragment();
+        feedbackDialogFragment.show(fm, "Feedback Fragment");
     }
+
 }

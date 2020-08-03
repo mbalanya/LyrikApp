@@ -11,7 +11,7 @@ public class FeedbackDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.feedback_fragment_mood_dialog, container, false);
+        View rootView = inflater.inflate(R.layout.feedback_fragment_dialog, container, false);
         getDialog().setTitle("Lyrics Feedback");
         return rootView;
     }
