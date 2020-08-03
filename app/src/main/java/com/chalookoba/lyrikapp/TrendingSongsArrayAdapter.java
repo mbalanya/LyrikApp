@@ -14,4 +14,16 @@ public class TrendingSongsArrayAdapter extends ArrayAdapter {
         this.mArtists = mArtists;
         this.mGenres = mGenres;
     }
+
+    @Override
+    public Object getItem(int position) {
+        String artists = mArtists[position];
+        String genres = mGenres[position];
+        return String.format("%s \nSings: %s", artists, genres);
+    }
+
+    @Override
+    public int getCount() {
+        return mArtists.length;
+    }
 }

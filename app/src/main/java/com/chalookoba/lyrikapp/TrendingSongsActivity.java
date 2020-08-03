@@ -32,7 +32,7 @@ public class TrendingSongsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, artists);
+        TrendingSongsArrayAdapter adapter = new TrendingSongsArrayAdapter(this, android.R.layout.simple_list_item_1, artists, genres);
         mListView.setAdapter(adapter);
 
         Intent intent = getIntent();
