@@ -10,19 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
-    private Button mSearchSongButton;
-    private EditText mArtistSearch;
+    @BindView(R.id.searchSongButton) Button mSearchSongButton;
+    @BindView(R.id.artistSearch) EditText mArtistSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toast.makeText(MainActivity.this, "Welcome to LyrikApp World!", Toast.LENGTH_LONG).show();
-
-        mArtistSearch = (EditText) findViewById(R.id.artistSearch);
-        mSearchSongButton = (Button)findViewById(R.id.searchSongButton);
 
         mSearchSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
