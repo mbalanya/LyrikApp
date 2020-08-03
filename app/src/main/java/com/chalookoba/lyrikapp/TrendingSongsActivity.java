@@ -19,6 +19,11 @@ public class TrendingSongsActivity extends AppCompatActivity {
             "DaBaby", "Luke Combs", "The Weekend", "BTS",
             "Drake", "Jhene Aiko", "Roddy Ricch",
             "Dua Lipa", "Morgan Wallen", "Lewis Capaldi", "Dj Khaled", "Billie Eilish", "Megan Thee Stallion", "Justin Bieber"};
+    private String[] genres = new String[] {"Hiphop", "Genge",
+            "Pop", "Rhumba", "Zilizopendwa", "Gengetone",
+            "Hiphop", "RnB", "Reggae", "Metal",
+            "Rock", "House", "RnB",
+            "Genge", "Trap", "House", "Rhumba", "Reggae", "Pop", "Zilizopendwa"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
