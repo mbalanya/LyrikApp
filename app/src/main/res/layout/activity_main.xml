@@ -11,6 +11,7 @@
         android:id="@+id/backgroundImage"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/earphones_bg2" />
 
@@ -20,11 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="400dp"
         android:fontFamily="@font/roboto_black"
-        android:text="LyricApp"
+        android:text="LyrikApp"
         android:textColor="@android:color/background_light"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <EditText
@@ -33,10 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/searchSongButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/colorAccent"
-        android:hint="Enter Artist Name:"
-        android:padding="5dp" />
+        android:hint="Enter Artist Name: "
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/searchSongButton"
@@ -47,7 +48,7 @@
         android:background="@color/colorAccent"
         android:text="Search Song"
         android:textColor="@color/colorPrimary"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="100dp"/>
 
 
 </RelativeLayout>

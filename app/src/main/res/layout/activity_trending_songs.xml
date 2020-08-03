@@ -9,8 +9,16 @@
         android:id="@+id/artistSearchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurants near "
-        android:layout_centerVertical="true"
+        android:text="Songs near "
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/artistSearchTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
