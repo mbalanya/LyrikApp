@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.artistSearch) EditText mArtistSearch;
     @BindView(R.id.appNameTextView) TextView mAppNameTextView;
 
-    @Override
+    @Override // called when app starts
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchSongButton.setOnClickListener(this);
     }
 
-    @Override
+    @Override //general onClick function
     public void onClick(View v) {
-        if(v == mSearchSongButton){
+        if(v == mSearchSongButton){ // main page onClick button function
             String artistSearch = mArtistSearch.getText().toString();
             Intent intent = new Intent(MainActivity.this, TrendingSongsActivity.class);
             intent.putExtra("artistSearch", artistSearch);

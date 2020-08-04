@@ -35,10 +35,11 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_trending_songs);
         ButterKnife.bind(this);
 
-
+        // gets artist and genres arrays
         TrendingSongsArrayAdapter adapter = new TrendingSongsArrayAdapter(this, android.R.layout.simple_list_item_1, artists, genres);
         mListView.setAdapter(adapter);
 
+        // set intent and add custom views
         Intent intent = getIntent();
         String artistSearch = intent.getStringExtra("artistSearch");
         mArtistSearchTextView.setText("Here are all the songs by: " + artistSearch);
@@ -48,7 +49,7 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        if(v == mFeedbackButton) {
+        if(v == mFeedbackButton) { // fragment link logic
             FragmentManager fm = getSupportFragmentManager();
             FeedbackDialogFragment feedbackDialogFragment = new FeedbackDialogFragment();
             feedbackDialogFragment.show(fm, "Feedback Fragment");
