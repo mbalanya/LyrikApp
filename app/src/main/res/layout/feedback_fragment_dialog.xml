@@ -15,6 +15,7 @@
         android:text="How do you find the Lyrics?"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
         android:textStyle="normal|bold"
         android:typeface="sans" />
 
