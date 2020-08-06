@@ -3,7 +3,7 @@ package com.chalookoba.lyrikapp;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-public class TrendingSongsArrayAdapter extends ArrayAdapter { //array adapter class functionality
+public class TrendingSongsArrayAdapter extends ArrayAdapter { //array adapter class functionality (wk1)
     private Context mContext;
     private String[] mArtists;
     private String[] mGenres;

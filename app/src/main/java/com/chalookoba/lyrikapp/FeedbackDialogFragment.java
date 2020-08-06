@@ -17,7 +17,7 @@ public class FeedbackDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.feedback_fragment_dialog, container, false);
         getDialog().setTitle("Lyrics Feedback");
-        Button cancelButton = (Button) rootView.findViewById(R.id.cancelButton); // butterknife cannot be used in fragments
+        Button cancelButton = (Button) rootView.findViewById(R.id.cancelButton); // butterknife cannot be used in fragments (wk1)
         Button submitButton = (Button) rootView.findViewById(R.id.submitButton);
 
         RadioGroup feedbackRadioGroup = (RadioGroup) rootView.findViewById(R.id.feedbackRadioGroup);
@@ -25,14 +25,14 @@ public class FeedbackDialogFragment extends DialogFragment {
         final RadioButton selectedRadioButton = (RadioButton) rootView.findViewById(selectedId);
 
 
-        cancelButton.setOnClickListener(new View.OnClickListener() { //cancel button logic
+        cancelButton.setOnClickListener(new View.OnClickListener() { //cancel button logic (wk1)
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
 
-        submitButton.setOnClickListener(new View.OnClickListener() { //submit button logic
+        submitButton.setOnClickListener(new View.OnClickListener() { //submit button logic (wk1)
             @Override
             public void onClick(View v) {
                 Log.d("testing", selectedRadioButton.getText().toString());
