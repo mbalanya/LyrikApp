@@ -23,7 +23,8 @@
         android:layout_marginTop="20dp"
         android:text="Songs near "
         android:textColor="@android:color/background_dark"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/listView"
@@ -32,6 +33,22 @@
         android:layout_below="@+id/artistSearchTextView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:visibility="gone" />
 
 </RelativeLayout>
