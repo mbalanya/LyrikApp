@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.artistSearchTextView) TextView mArtistSearchTextView;
     @BindView(R.id.listView) ListView mListView;
     @BindView(R.id.feedbackButton) Button mFeedbackButton;
+    @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
     /*private String[] artists = new String[] {"Juice WRLD", "The Chicks",
             "Pop Smoke", "Harry Styles", "Lil Baby", "Post Malone",
             "DaBaby", "Luke Combs", "The Weekend", "BTS",
