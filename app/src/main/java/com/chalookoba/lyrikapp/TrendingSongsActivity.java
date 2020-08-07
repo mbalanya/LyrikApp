@@ -6,11 +6,13 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,6 +49,14 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         /*TrendingSongsArrayAdapter adapter = new TrendingSongsArrayAdapter(this, android.R.layout.simple_list_item_1, artists, genres);
         mListView.setAdapter(adapter);*/
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String track = ((TextView)view).getText().toString();
+                Toast.makeText(TrendingSongsActivity.this, track, Toast.LENGTH_LONG).show();
+            }
+        });
+
         // set intent and add custom views (wk1)
         Intent intent = getIntent();
         String artistSearch = intent.getStringExtra("artistSearch");
@@ -60,8 +70,10 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         call.enqueue(new Callback<MusixMatchTrackSearchResponse>() {
             @Override
             public void onResponse(Call<MusixMatchTrackSearchResponse> call, Response<MusixMatchTrackSearchResponse> response) {
+                hideProgressBar();
+
                 if (response.isSuccessful()) {
-                    List<Track> trackList = response.body().getMessage();
+                    List<Track> trackList = response.body().getTracks();
                     String[] tracks = new String[trackList.size()];
                     String[] artists = new String[trackList.size()];
 
@@ -70,19 +82,24 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
                     }
 
                     for (int i = 0; i < artists.length; i++) {
-                        Track track = trackList.get(i);
+                        Track track = trackList.get(i).getArtistName().get(0);
                         artists[i] = track.getArtistName();
 
                     }
 
                     ArrayAdapter adapter = new TrendingSongsArrayAdapter(TrendingSongsActivity.this, android.R.layout.simple_list_item_1, tracks, artists);
                     mListView.setAdapter(adapter);
+
+                    showTracks();
+                } else {
+                    showUnsuccessfulMessage();
                 }
             }
 
             @Override
             public void onFailure(Call<MusixMatchTrackSearchResponse> call, Throwable t) {
-
+                hideProgressBar();
+                showFailureMessage();
             }
         });
     }
@@ -94,6 +111,25 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
             FeedbackDialogFragment feedbackDialogFragment = new FeedbackDialogFragment();
             feedbackDialogFragment.show(fm, "Feedback Fragment");
         }
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showTracks() {
+        mListView.setVisibility(View.VISIBLE);
+        mArtistSearchTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 
 }
