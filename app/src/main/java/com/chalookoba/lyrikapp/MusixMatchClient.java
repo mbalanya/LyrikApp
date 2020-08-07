@@ -14,7 +14,7 @@ import static com.chalookoba.lyrikapp.Constants.MUSIXMATCH_BASE_URL;
 
 public class MusixMatchClient { //use Retrofit.Builder class to create the instances as well as set some general options for all requests (base URL and the converter)
     private static Retrofit retrofit = null;
-    private static MusixMatchApi getClient() {
+    public static MusixMatchApi getClient() {
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {

@@ -33,7 +33,7 @@ public class Track {
     private String albumCoverart500x500;
     @SerializedName("album_name")
     @Expose
-    private String albumName;
+    public String albumName;
     @SerializedName("track_rating")
     @Expose
     private Double trackRating;
@@ -45,7 +45,7 @@ public class Track {
     private Integer trackSoundcloudId;
     @SerializedName("artist_name")
     @Expose
-    private String artistName;
+    public String artistName;
     @SerializedName("album_coverart_800x800")
     @Expose
     private String albumCoverart800x800;
@@ -57,7 +57,7 @@ public class Track {
     private List<String> trackNameTranslationList = null;
     @SerializedName("track_name")
     @Expose
-    private String trackName;
+    public String trackName;
     @SerializedName("restricted")
     @Expose
     private Integer restricted;
@@ -112,6 +112,7 @@ public class Track {
     @SerializedName("commontrack_id")
     @Expose
     private Integer commontrackId;
+
 
     /**
      * No args constructor for use in serialization

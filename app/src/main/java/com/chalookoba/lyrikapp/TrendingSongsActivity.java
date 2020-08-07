@@ -23,7 +23,7 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.artistSearchTextView) TextView mArtistSearchTextView;
     @BindView(R.id.listView) ListView mListView;
     @BindView(R.id.feedbackButton) Button mFeedbackButton;
-    private String[] artists = new String[] {"Juice WRLD", "The Chicks",
+    /*private String[] artists = new String[] {"Juice WRLD", "The Chicks",
             "Pop Smoke", "Harry Styles", "Lil Baby", "Post Malone",
             "DaBaby", "Luke Combs", "The Weekend", "BTS",
             "Drake", "Jhene Aiko", "Roddy Ricch",
@@ -32,7 +32,7 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
             "Pop", "Rhumba", "Zilizopendwa", "Gengetone",
             "Hiphop", "RnB", "Reggae", "Metal",
             "Rock", "House", "RnB",
-            "Genge", "Trap", "House", "Rhumba", "Reggae", "Pop", "Zilizopendwa"};
+            "Genge", "Trap", "House", "Rhumba", "Reggae", "Pop", "Zilizopendwa"};*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
 
         // gets artist and genres arrays (wk1)
-        TrendingSongsArrayAdapter adapter = new TrendingSongsArrayAdapter(this, android.R.layout.simple_list_item_1, artists, genres);
-        mListView.setAdapter(adapter);
+        /*TrendingSongsArrayAdapter adapter = new TrendingSongsArrayAdapter(this, android.R.layout.simple_list_item_1, artists, genres);
+        mListView.setAdapter(adapter);*/
 
         // set intent and add custom views (wk1)
         Intent intent = getIntent();
@@ -52,15 +52,28 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         mFeedbackButton.setOnClickListener(this);
 
         MusixMatchApi client = MusixMatchClient.getClient();
-        Call<MusixMatchTrackSearchResponse> call = client.getMusic(artistSearch, artistSearch);
+        Call<MusixMatchTrackSearchResponse> call = client.getMusic(artistSearch);
 
         call.enqueue(new Callback<MusixMatchTrackSearchResponse>() {
             @Override
             public void onResponse(Call<MusixMatchTrackSearchResponse> call, Response<MusixMatchTrackSearchResponse> response) {
                 if (response.isSuccessful()) {
-                    List<TrackList> trackList = response.body().getTrackList();
+                    List<Track> trackList = response.body().getMessage();
                     String[] tracks = new String[trackList.size()];
                     String[] artists = new String[trackList.size()];
+
+                    for (int i = 0; i < tracks.length; i++) {
+                        tracks[i] = trackList.get(i).getTrackName();
+                    }
+
+                    for (int i = 0; i < artists.length; i++) {
+                        Track track = trackList.get(i);
+                        artists[i] = track.getArtistName();
+
+                    }
+
+                    ArrayAdapter adapter = new TrendingSongsArrayAdapter(TrendingSongsActivity.this, android.R.layout.simple_list_item_1, tracks, artists);
+                    mListView.setAdapter(adapter);
                 }
             }
 
