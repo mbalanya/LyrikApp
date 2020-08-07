@@ -11,8 +11,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TrendingSongsActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView(R.id.artistSearchTextView) TextView mArtistSearchTextView;
@@ -45,6 +50,25 @@ public class TrendingSongsActivity extends AppCompatActivity implements View.OnC
         mArtistSearchTextView.setText("Here are all the songs by: " + artistSearch);
 
         mFeedbackButton.setOnClickListener(this);
+
+        MusixMatchApi client = MusixMatchClient.getClient();
+        Call<MusixMatchTrackSearchResponse> call = client.getMusic(artistSearch, artistSearch);
+
+        call.enqueue(new Callback<MusixMatchTrackSearchResponse>() {
+            @Override
+            public void onResponse(Call<MusixMatchTrackSearchResponse> call, Response<MusixMatchTrackSearchResponse> response) {
+                if (response.isSuccessful()) {
+                    List<TrackList> trackList = response.body().getTrackList();
+                    String[] tracks = new String[trackList.size()];
+                    String[] artists = new String[trackList.size()];
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MusixMatchTrackSearchResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
